@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratt Exams</title>
+    <link rel="icon" href="icono.png" type="image/png">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        // Configuración de MathJax
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="logo.png" align="left" style="width:80px;">
+                    <div class="logo">STRAT EXAMS</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#test">Vocacionales</a></li>
+                        <li><a href="#test">Pruebas</a></li>
+                        <li><a href="#cambridge">Cambridge</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-layout">
+
+                <div class="hero-image">
+                    <img src="imagen.png" alt="Mascota orientación">
+                </div>
+
+                <div class="hero-text"
+                    style="display: flex; flex-direction: column; justify-content: center; gap: 15px;">
+                    <h1 style="font-size: 2.7rem; line-height: 1.2; margin-bottom: 10px;">
+                        ¿Necesitas certificar tu inglés o prepararte para una admisión?
+                    </h1>
+                    <p style="line-height: 1.5; font-size: 1.3rem; margin-bottom: 20px;">
+                        Aquí encontrarás exámenes vocacionales, de inglés y de admisión que te ayudan a conocerte, medir
+                        tus habilidades y avanzar con confianza.
+                    </p>
+                    <p style="font-style: italic; margin-bottom: 25px;">
+                        <strong>Aprender te conecta con el mundo 🌍</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="acerca">
+        <div class="container">
+            <h2 class="section-title">¿Por qué es importante la orientación vocacional?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Identifica tus intereses</h3>
+                    <p>No elijas una carrera solo por moda. Descubre qué actividades realmente te apasionan y cómo
+                        convertirlas en tu futura profesión.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Conoce tus fortalezas</h3>
+                    <p>Todos tenemos talentos únicos. Detecta tus aptitudes naturales, desde la lógica matemática hasta
+                        la creatividad artística, y úsalas a tu favor.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Toma decisiones informadas</h3>
+                    <p>Evita la incertidumbre. Accede a datos reales sobre el mercado laboral, salarios y proyección a
+                        futuro para elegir con seguridad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="test">
+        <div class="container">
+            <h2 class="section-title">Test de Orientación Vocacional</h2>
+            <div class="test-container">
+                <div class="registration-form active" id="registration-form">
+                    <h3>Registro para realizar algun examen</h3>
+                    <p>Por favor, completa tus datos antes de comenzar el test.</p>
+
+                    <form id="user-registration">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nombre completo *</label>
+                                <input type="text" id="name" name="name" maxlength="60" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" title="Solo se permiten letras y espacios" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Edad *</label>
+                                <input type="number" id="age" name="age" min="6" max="75" oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Número telefónico *</label>
+                                <input type="tel" id="phone" name="phone" maxlength="10" pattern="[0-9]{10}" title="El teléfono debe contener exactamente 10 números" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo electrónico *</label>
+                                <input type="email" id="email" name="email" maxlength="60" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Ingresa un formato de correo válido. Ejemplo: alumno@correo.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="career-interest">Carrera de interés</label>
+                                <select id="career-interest" name="career-interest">
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="medicina">Medicina</option>
+                                    <option value="ingenieria">Ingeniería</option>
+                                    <option value="derecho">Derecho</option>
+                                    <option value="administracion">Administración</option>
+                                    <option value="educacion">Educación</option>
+                                    <option value="arquitectura">Arquitectura</option>
+                                    <option value="psicologia">Psicología</option>
+                                    <option value="comunicacion">Comunicación</option>
+                                    <option value="otra">Otra</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="average">Promedio académico *</label>
+                                <input type="number" id="average" name="average" min="0" max="10" step="0.1" oninput="if(this.value > 10) this.value = 10; if(this.value.length > 4) this.value = this.value.slice(0,4);" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="test-type">Tipo de Examen *</label>
+                                <select id="test-type" name="test-type" required>
+                                    <option value="">Selecciona un tipo</option>
+                                    <option value="admision">Admisión</option>
+                                    <option value="vocacional">Vocacional</option>
+                                    <option value="cambridge">Cambridge</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="selected-test">Examen a Realizar *</label>
+                                <select id="selected-test" name="selected-test" required disabled>
+                                    <option value="">Selecciona primero el tipo de examen que quiere realizar</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn">Comenzar Test</button>
+                    </form>
+                </div>
+
+                <div id="instructions-screen" style="display: none;">
+                    <div class="instructions-content">
+                        <h3>INSTRUCCIONES:</h3>
+                        <p>Realiza el siguiente test en un espacio privado y cómodo.</p>
+                        <p>No hay respuestas correctas o incorrectas. La validez del test dependerá mucho de la
+                            honestidad con la que respondas.</p>
+                        <p>La aplicación del test es personal. Procura disponer de 30 minutos en los que puedas contar
+                            con un espacio privado.</p>
+                        <p>Lee con mucha atención cada actividad.</p>
+                    </div>
+                    <div class="navigation">
+                        <button class="btn" id="start-test-btn">Empezar Test</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-universitario" style="display: none;">
+                    <h3>Test Vocacional Universitario (80 Preguntas)</h3>
+                    <p>Lee cada actividad y marca tu interés.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-uni"></div>
+                    </div>
+                    <div id="test-questions-container-uni"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-uni">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-uni" style="display: none;">Ver
+                            Resultados</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-bachillerato" style="display: none;">
+                    <h3>Test Vocacional Bachillerato (98 Preguntas)</h3>
+                    <p>Lee cada actividad y marca tu interés.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-bach"></div>
+                    </div>
+                    <div id="test-questions-container-bach"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-bach">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-bach" style="display: none;">Ver
+                            Resultados</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-uam" style="display: none;">
+                    <h3>Examen UAM (96 Preguntas)</h3>
+                    <p>Selecciona la opción correcta en cada pregunta.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-uam"></div>
+                    </div>
+                    <div id="test-questions-container-uam"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-uam">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-uam" style="display: none;">Finalizar
+                            Examen</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-comipems" style="display: none;">
+                    <h3>Examen de Admisión COMIPEMS (90 Preguntas)</h3>
+                    <p>Selecciona la opción correcta en cada pregunta.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-comipems"></div>
+                    </div>
+                    <div id="test-questions-container-comipems"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-comipems">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-comipems" style="display: none;">Finalizar
+                            Examen</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-comipems2" style="display: none;">
+                    <h3>Examen de Simulación COMIPEMS (128 Preguntas)</h3>
+                    <p>Selecciona la opción correcta en cada pregunta.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-comipems2"
+                            style="width: 0%; height: 20px; background-color: #4CAF50;"></div>
+                    </div>
+                    <div id="test-questions-container-comipems2"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-comipems2">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-comipems2" style="display: none;">Finalizar
+                            Simulación</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-unammedicina" style="display: none;">
+                    <h3>Examen de Simulación UNAM Medicina (117 Preguntas)</h3>
+                    <p>Selecciona la opción correcta en cada pregunta.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-unammedicina"
+                            style="width: 0%; height: 20px; background-color: #4CAF50;"></div>
+                    </div>
+                    <div id="test-questions-container-unammedicina"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-unammedicina">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-unammedicina" style="display: none;">Finalizar
+                            Simulación</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-ipn" style="display: none;">
+                    <h3>Examen de Admisión IPN (110 Preguntas)</h3>
+                    <p>Selecciona la opción correcta en cada pregunta.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-ipn"
+                            style="width: 0%; height: 20px; background-color: #4CAF50;"></div>
+                    </div>
+                    <div id="test-questions-container-ipn"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-ipn">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-ipn" style="display: none;">Finalizar
+                            Examen</button>
+                    </div>
+                </div>
+
+
+
+                <div class="results" id="results" style="display: none;">
+                    <h2>Resultados de tu Evaluación</h2>
+                    <div class="user-info">
+                        <h3>Información del Estudiante</h3>
+                        <div class="user-details" id="user-details"></div>
+                    </div>
+                    <p>Basado en tus respuestas, estas son las áreas profesionales que más te interesan, ordenadas por
+                        puntuación (Solo aplica en tests vocacionales):</p>
+                    <div id="results-cards"></div>
+                    <div id="uam-details"></div>
+                    <button class="btn" id="restart-btn">Realizar Test Nuevamente</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cambridge">
+        <div class="container">
+            <h2 class="section-title">Cambridge</h2>
+            <div class="test-container" id="cambridge-main-container">
+                <p id="cambridge-intro-text"
+                    style="text-align: center; font-size: 1.2rem; margin-bottom: 30px; color: var(--texto-oscuro);"></p>
+
+                <div class="resources" id="cambridge-cards">
+                    <div class="resource-card">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">🧒</div>
+                        <h3 style="color: var(--azul-fuerte);">Movers</h3>
+                        <p>Nivel A1 para niños. Desarrolla la confianza para entender instrucciones y tener
+                            conversaciones sencillas.</p>
+                        <button id="btn-start-movers" class="btn">Realizar Test</button>
+                    </div>
+
+                    <div class="resource-card">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">📚</div>
+                        <h3 style="color: var(--azul-fuerte);">Starters</h3>
+                        <p>Nivel Pre A1. Enfocado en desarrollar habilidades básicas de lectura y escritura.</p>
+                        <button id="btn-start-starters" class="btn">Realizar Test</button>
+                    </div>
+
+                    <div class="resource-card">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">🎓</div>
+                        <h3 style="color: var(--azul-fuerte);">A2 Starters & Movers</h3>
+                        <p>Preparación integral para los niveles Pre A2 y A1. Construye una base sólida.</p>
+                        <button id="btn-start-starters-movers" class="btn">Realizar Test</button>
+                    </div>
+
+                    <div class="resource-card">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">📝</div>
+                        <h3 style="color: var(--azul-fuerte);">Movers Exam</h3>
+                        <p>Certificación oficial nivel A1. Valida internacionalmente tu capacidad.</p>
+                        <button id="btn-start-movers-exam" class="btn">Realizar Test</button>
+                    </div>
+
+                    <div class="resource-card">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">🎧</div>
+                        <h3 style="color: var(--azul-fuerte);">KET Cambridge</h3>
+                        <p>Certificación oficial nivel A2. Evalúa tu capacidad para comunicarte en situaciones
+                            sencillas.</p>
+                        <button id="btn-start-cambridge-ket" class="btn">Realizar Test</button>
+                    </div>
+
+                    <div class="resource-card">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">💼</div>
+                        <h3 style="color: var(--azul-fuerte);">FCE (General)</h3>
+                        <p>Certificación oficial nivel B2. Demuestra que posees las habilidades para vivir y trabajar.
+                        </p>
+                        <button id="btn-start-cambridge-general" class="btn">Realizar Test</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-movers" style="display: none;">
+                    <h3 style="text-align: center; color: var(--azul-fuerte); margin-bottom: 20px;">Examen Cambridge:
+                        Movers</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-movers"
+                            style="width: 0%; height: 20px; background-color: #4CAF50;"></div>
+                    </div>
+                    <div id="test-questions-container-movers"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-movers">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-movers" style="display: none;">Finalizar
+                            Examen</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-starters" style="display: none;">
+                    <h3 style="text-align: center; color: var(--azul-fuerte); margin-bottom: 20px;">Examen Cambridge:
+                        Starters</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-starters"
+                            style="width: 0%; height: 20px; background-color: #4CAF50;"></div>
+                    </div>
+                    <div id="test-questions-container-starters"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-starters">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-starters" style="display: none;">Finalizar
+                            Examen</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-starters-movers" style="display: none;">
+                    <h3 style="text-align: center; color: var(--azul-fuerte); margin-bottom: 20px;">Examen Cambridge: A2
+                        Starters & Movers</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-sm"
+                            style="width: 0%; height: 20px; background-color: #4CAF50;"></div>
+                    </div>
+                    <div id="test-questions-container-sm"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-sm">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-sm" style="display: none;">Finalizar
+                            Examen</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-movers-exam" style="display: none;">
+                    <h3 style="text-align: center; color: var(--azul-fuerte); margin-bottom: 20px;">Examen Cambridge:
+                        Movers Exam</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-me"
+                            style="width: 0%; height: 20px; background-color: #4CAF50;"></div>
+                    </div>
+                    <div id="test-questions-container-me"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-me">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-me" style="display: none;">Finalizar
+                            Examen</button>
+                    </div>
+                </div>
+
+
+                <div class="test-content" id="test-cambridge-general" style="display: none;">
+                    <h3 style="text-align: center; color: var(--azul-fuerte); margin-bottom: 20px;">Examen FCE (General)
+                    </h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-cg"
+                            style="width: 0%; height: 20px; background-color: #4CAF50;"></div>
+                    </div>
+                    <div id="test-questions-container-cg"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-cg">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-cg" style="display: none;">Finalizar
+                            Examen</button>
+                    </div>
+                </div>
+
+                <div class="test-content" id="test-cambridge-ket" style="display: none;">
+                    <h3 style="text-align: center; color: var(--azul-fuerte); margin-bottom: 20px;">Examen Cambridge KET
+                    </h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-ck"
+                            style="width: 0%; height: 20px; background-color: #4CAF50;"></div>
+                    </div>
+                    <div id="test-questions-container-ck"></div>
+                    <div class="navigation">
+                        <button class="btn" id="next-btn-ck">Siguiente</button>
+                        <button class="btn btn-secondary" id="submit-btn-ck" style="display: none;">Finalizar
+                            Examen</button>
+                    </div>
+                </div>
+
+
+                <div class="results" id="results-cambridge" style="display: none; text-align: center;">
+                    <h2>Resultados de tu Examen Cambridge</h2>
+                    <div id="cambridge-score-details" style="margin: 20px 0; font-size: 1.2rem;"></div>
+                    <button class="btn" id="restart-cambridge-btn">Volver a los niveles</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="recursos">
+        <div class="container">
+            <h2 class="section-title">Recursos de Orientación Vocacional</h2>
+            <div class="resources">
+                <div class="resource-card">
+                    <h3>Oferta Educativa</h3>
+                    <p>Información detallada sobre diferentes carreras profesionales, planes de estudio y universidades.
+                    </p>
+                    <a href="ofertasedu.pdf" class="btn">Consultar</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Stratford</h3>
+                    <p>Aquí podrás encontrar material adicional para la preparación para tu examen de bachillerato o universidad.</p>
+                    <a href="https://stratfordlernen.com/" target="_blank" class="btn">Consultar</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Asesoría Personalizada</h3>
+                    <p>Agenda una sesión con nuestros orientadores vocacionales certificados.</p>
+                    <a href="https://wa.me/525610976482?text=Hola,%20me%20interesa%20consultar%20sobre%20el%20mercado%20laboral"
+                        target="_blank" class="btn">Solicitar</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Mercado Laboral</h3>
+                    <p>Información actualizada sobre las profesiones con mayor demanda y proyección.</p>
+                    <a href="Mercado_laboral.pdf" class="btn">Consultar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">📞</div>
+                        <h3>Teléfono</h3>
+                        <p>+52 5610976482</p>
+                        <a href="tel:+525610976482" class="btn-contact">Llamar ahora</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">✉️</div>
+                        <h3>Email</h3>
+                        <p>stratfordlernenacademy@gmail.com</p>
+                        <a href="mailto:stratfordlernenacademy@gmail.com" class="btn-contact">Enviar email</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">💬</div>
+                        <h3>WhatsApp</h3>
+                        <p>Chatea con nosotros</p>
+                        <a href="https://wa.me/525610976482?text=Hola,%20me%20interesa%20saber%20más%20sobre%20orientación%20vocacional"
+                            target="_blank" class="btn-contact">Abrir WhatsApp</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🌐</div>
+                        <h3>Redes Sociales</h3>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/kidslanguages/" target="_blank">Facebook</a>
+                            <a href="https://www.instagram.com/stlernen/?hl=en" target="_blank">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">Orientación Vocacional</div>
+                <p>Ayudando a estudiantes a encontrar su camino profesional desde 2020</p>
+                <p>Aprender te conecta con el mundo 🌍</p>
+                <div class="footer-links">
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos de Servicio</a>
+                    <a href="#contacto">Contáctanos</a>
+                </div>
+                <p>&copy; 2025 Orientación Vocacional. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="datosExamenes.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+
+</html>
