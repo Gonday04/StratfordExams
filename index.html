@@ -104,22 +104,22 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Nombre completo *</label>
-                                <input type="text" id="name" name="name" maxlength="60" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" title="Solo se permiten letras y espacios" required>
+                                <input type="text" id="name" name="name" maxlength="50" required>
                             </div>
                             <div class="form-group">
                                 <label for="age">Edad *</label>
-                                <input type="number" id="age" name="age" min="6" max="75" oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);" required>
+                                <input type="number" id="age" name="age" min="15" max="30" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="phone">Número telefónico *</label>
-                                <input type="tel" id="phone" name="phone" maxlength="10" pattern="[0-9]{10}" title="El teléfono debe contener exactamente 10 números" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" required>
+                                <input type="tel" id="phone" name="phone" maxlength="10" pattern="\d{10}" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Correo electrónico *</label>
-                                <input type="email" id="email" name="email" maxlength="60" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Ingresa un formato de correo válido. Ejemplo: alumno@correo.com" required>
+                                <input type="email" id="email" name="email" required>
                             </div>
                         </div>
 
@@ -141,7 +141,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="average">Promedio académico *</label>
-                                <input type="number" id="average" name="average" min="0" max="10" step="0.1" oninput="if(this.value > 10) this.value = 10; if(this.value.length > 4) this.value = this.value.slice(0,4);" required>
+                                <input type="number" id="average" name="average" min="0" max="10" step="0.1" required>
                             </div>
                         </div>
 
@@ -152,7 +152,7 @@
                                     <option value="">Selecciona un tipo</option>
                                     <option value="admision">Admisión</option>
                                     <option value="vocacional">Vocacional</option>
-                                    <option value="cambridge">Cambridge</option>
+                                    
                                 </select>
                             </div>
                             <div class="form-group">
@@ -163,7 +163,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn">Comenzar Test</button>
+                        <button type="button" class="btn">Comenzar Test</button>
                     </form>
                 </div>
 
@@ -178,7 +178,7 @@
                         <p>Lee con mucha atención cada actividad.</p>
                     </div>
                     <div class="navigation">
-                        <button class="btn" id="start-test-btn">Empezar Test</button>
+                        <button type="button" class="btn" id="start-test-btn">Empezar Test</button>
                     </div>
                 </div>
 
@@ -190,8 +190,8 @@
                     </div>
                     <div id="test-questions-container-uni"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-uni">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-uni" style="display: none;">Ver
+                        <button type="button" class="btn" id="next-btn-uni">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-uni" style="display: none;">Ver
                             Resultados</button>
                     </div>
                 </div>
@@ -204,8 +204,8 @@
                     </div>
                     <div id="test-questions-container-bach"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-bach">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-bach" style="display: none;">Ver
+                        <button type="button" class="btn" id="next-btn-bach">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-bach" style="display: none;">Ver
                             Resultados</button>
                     </div>
                 </div>
@@ -218,8 +218,8 @@
                     </div>
                     <div id="test-questions-container-uam"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-uam">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-uam" style="display: none;">Finalizar
+                        <button type="button" class="btn" id="next-btn-uam">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-uam" style="display: none;">Finalizar
                             Examen</button>
                     </div>
                 </div>
@@ -232,8 +232,8 @@
                     </div>
                     <div id="test-questions-container-comipems"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-comipems">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-comipems" style="display: none;">Finalizar
+                        <button type="button" class="btn" id="next-btn-comipems">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-comipems" style="display: none;">Finalizar
                             Examen</button>
                     </div>
                 </div>
@@ -247,8 +247,8 @@
                     </div>
                     <div id="test-questions-container-comipems2"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-comipems2">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-comipems2" style="display: none;">Finalizar
+                        <button type="button" class="btn" id="next-btn-comipems2">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-comipems2" style="display: none;">Finalizar
                             Simulación</button>
                     </div>
                 </div>
@@ -262,8 +262,8 @@
                     </div>
                     <div id="test-questions-container-unammedicina"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-unammedicina">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-unammedicina" style="display: none;">Finalizar
+                        <button type="button" class="btn" id="next-btn-unammedicina">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-unammedicina" style="display: none;">Finalizar
                             Simulación</button>
                     </div>
                 </div>
@@ -277,8 +277,8 @@
                     </div>
                     <div id="test-questions-container-ipn"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-ipn">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-ipn" style="display: none;">Finalizar
+                        <button type="button" class="btn" id="next-btn-ipn">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-ipn" style="display: none;">Finalizar
                             Examen</button>
                     </div>
                 </div>
@@ -295,7 +295,7 @@
                         puntuación (Solo aplica en tests vocacionales):</p>
                     <div id="results-cards"></div>
                     <div id="uam-details"></div>
-                    <button class="btn" id="restart-btn">Realizar Test Nuevamente</button>
+                    <button type="button" class="btn" id="restart-btn">Realizar Test Nuevamente</button>
                 </div>
             </div>
         </div>
@@ -314,28 +314,28 @@
                         <h3 style="color: var(--azul-fuerte);">Movers</h3>
                         <p>Nivel A1 para niños. Desarrolla la confianza para entender instrucciones y tener
                             conversaciones sencillas.</p>
-                        <button id="btn-start-movers" class="btn">Realizar Test</button>
+                        <button type="button" id="btn-start-movers" class="btn">Realizar Test</button>
                     </div>
 
                     <div class="resource-card">
                         <div style="font-size: 3rem; margin-bottom: 10px;">📚</div>
                         <h3 style="color: var(--azul-fuerte);">Starters</h3>
                         <p>Nivel Pre A1. Enfocado en desarrollar habilidades básicas de lectura y escritura.</p>
-                        <button id="btn-start-starters" class="btn">Realizar Test</button>
+                        <button type="button" id="btn-start-starters" class="btn">Realizar Test</button>
                     </div>
 
                     <div class="resource-card">
                         <div style="font-size: 3rem; margin-bottom: 10px;">🎓</div>
                         <h3 style="color: var(--azul-fuerte);">A2 Starters & Movers</h3>
                         <p>Preparación integral para los niveles Pre A2 y A1. Construye una base sólida.</p>
-                        <button id="btn-start-starters-movers" class="btn">Realizar Test</button>
+                        <button type="button" id="btn-start-starters-movers" class="btn">Realizar Test</button>
                     </div>
 
                     <div class="resource-card">
                         <div style="font-size: 3rem; margin-bottom: 10px;">📝</div>
                         <h3 style="color: var(--azul-fuerte);">Movers Exam</h3>
                         <p>Certificación oficial nivel A1. Valida internacionalmente tu capacidad.</p>
-                        <button id="btn-start-movers-exam" class="btn">Realizar Test</button>
+                        <button type="button" id="btn-start-movers-exam" class="btn">Realizar Test</button>
                     </div>
 
                     <div class="resource-card">
@@ -343,7 +343,7 @@
                         <h3 style="color: var(--azul-fuerte);">KET Cambridge</h3>
                         <p>Certificación oficial nivel A2. Evalúa tu capacidad para comunicarte en situaciones
                             sencillas.</p>
-                        <button id="btn-start-cambridge-ket" class="btn">Realizar Test</button>
+                        <button type="button" id="btn-start-cambridge-ket" class="btn">Realizar Test</button>
                     </div>
 
                     <div class="resource-card">
@@ -351,7 +351,7 @@
                         <h3 style="color: var(--azul-fuerte);">FCE (General)</h3>
                         <p>Certificación oficial nivel B2. Demuestra que posees las habilidades para vivir y trabajar.
                         </p>
-                        <button id="btn-start-cambridge-general" class="btn">Realizar Test</button>
+                        <button type="button" id="btn-start-cambridge-general" class="btn">Realizar Test</button>
                     </div>
                 </div>
 
@@ -364,8 +364,8 @@
                     </div>
                     <div id="test-questions-container-movers"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-movers">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-movers" style="display: none;">Finalizar
+                        <button type="button" class="btn" id="next-btn-movers">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-movers" style="display: none;">Finalizar
                             Examen</button>
                     </div>
                 </div>
@@ -379,8 +379,8 @@
                     </div>
                     <div id="test-questions-container-starters"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-starters">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-starters" style="display: none;">Finalizar
+                        <button type="button" class="btn" id="next-btn-starters">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-starters" style="display: none;">Finalizar
                             Examen</button>
                     </div>
                 </div>
@@ -394,8 +394,8 @@
                     </div>
                     <div id="test-questions-container-sm"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-sm">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-sm" style="display: none;">Finalizar
+                        <button type="button" class="btn" id="next-btn-sm">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-sm" style="display: none;">Finalizar
                             Examen</button>
                     </div>
                 </div>
@@ -409,8 +409,8 @@
                     </div>
                     <div id="test-questions-container-me"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-me">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-me" style="display: none;">Finalizar
+                        <button type="button" class="btn" id="next-btn-me">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-me" style="display: none;">Finalizar
                             Examen</button>
                     </div>
                 </div>
@@ -425,8 +425,8 @@
                     </div>
                     <div id="test-questions-container-cg"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-cg">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-cg" style="display: none;">Finalizar
+                        <button type="button" class="btn" id="next-btn-cg">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-cg" style="display: none;">Finalizar
                             Examen</button>
                     </div>
                 </div>
@@ -440,8 +440,8 @@
                     </div>
                     <div id="test-questions-container-ck"></div>
                     <div class="navigation">
-                        <button class="btn" id="next-btn-ck">Siguiente</button>
-                        <button class="btn btn-secondary" id="submit-btn-ck" style="display: none;">Finalizar
+                        <button type="button" class="btn" id="next-btn-ck">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" id="submit-btn-ck" style="display: none;">Finalizar
                             Examen</button>
                     </div>
                 </div>
@@ -450,7 +450,7 @@
                 <div class="results" id="results-cambridge" style="display: none; text-align: center;">
                     <h2>Resultados de tu Examen Cambridge</h2>
                     <div id="cambridge-score-details" style="margin: 20px 0; font-size: 1.2rem;"></div>
-                    <button class="btn" id="restart-cambridge-btn">Volver a los niveles</button>
+                    <button type="button" class="btn" id="restart-cambridge-btn">Volver a los niveles</button>
                 </div>
 
             </div>

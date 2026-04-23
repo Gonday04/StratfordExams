@@ -1589,8 +1589,6 @@ const seccionWritingGeneral = [
         type: "writing_input",
         p: "Write your email requesting time off here (100-150 words):",
         img: "",
-        minWords: 100,
-        maxWords:150,
         // Evaluará correcta si el usuario usa alguna de estas palabras lógicas en su texto
         bancoRespuestas: ["dear", "regards", "request", "time off", "vacation", "absence", "leave"]
     }
