@@ -432,25 +432,30 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 respuestasUsuario[preguntaActualIndex] = respuestasEstudiante;
             } 
-            else if (preguntaActual.type === "scrambled_word" || preguntaActual.type === "writing_input") {
-                const input = document.getElementById(`input-${prefix}-${n}`);
-                const textoUsuario = input.value.trim();
-                
-                if (textoUsuario === "") {
-                    alert(`Por favor, escribe tu respuesta para ${esFinal ? 'finalizar' : 'continuar'}.`);
-                    return false;
-                }
+           else if (preguntaActual.type === "scrambled_word" || preguntaActual.type === "writing_input") {
+    const input = document.getElementById(`input-${prefix}-${n}`);
+    const texto = input.value.trim();
 
-                if (preguntaActual.minWords && preguntaActual.maxWords) {
-                    const numPalabras = textoUsuario.split(/\s+/).filter(word => word.length > 0).length;
-                    
-                    if (numPalabras < preguntaActual.minWords || numPalabras > preguntaActual.maxWords) {
-                        alert(`Tu texto tiene ${numPalabras} palabras. Para este examen debes escribir entre ${preguntaActual.minWords} y ${preguntaActual.maxWords} palabras.`);
-                        return false; // Bloquea el avance
-                    }
-                }
-                respuestasUsuario[preguntaActualIndex] = textoUsuario;
-            }
+    // Validar que no esté vacío
+    if (texto === "") {
+        alert(`Por favor, escribe tu respuesta para ${esFinal ? 'finalizar' : 'continuar'}.`);
+        return false;
+    }
+
+    // VALIDACIÓN PARA FCE (cambridge_general)
+    if (examenActivoId === 'cambridge_general') {
+        const palabras = texto.split(/\s+/).filter(p => p.length > 0);
+        const cantidad = palabras.length;
+
+        if (cantidad < 100 || cantidad > 150) {
+            alert(`Tu texto debe tener entre 100 y 150 palabras. Actualmente tienes ${cantidad}.`);
+            return false;
+        }
+    }
+
+    // Guardar respuesta
+    respuestasUsuario[preguntaActualIndex] = texto;
+}
             else {
                 const selector = `input[name="q-${prefix}-${n}"]:checked`;
                 const seleccionada = document.querySelector(selector);
@@ -772,28 +777,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const restartCambridgeBtn = document.getElementById('restart-cambridge-btn');
     if (restartCambridgeBtn) {
-        // Clonamos para evitar eventos duplicados en caché
-        const nuevoRestartBtn = restartCambridgeBtn.cloneNode(true);
-        restartCambridgeBtn.parentNode.replaceChild(nuevoRestartBtn, restartCambridgeBtn);
-
-        nuevoRestartBtn.addEventListener('click', () => {
+        restartCambridgeBtn.addEventListener('click', () => {
             document.getElementById('results-cambridge').style.display = 'none';
-            
-            // MAGIA: Al dejar las comillas vacías, el navegador respeta tu diseño CSS original
-            document.getElementById('cambridge-cards').style.display = ''; 
-            
+            document.getElementById('cambridge-cards').style.display = 'flex'; // o 'grid'|
             const cambridgeIntroText = document.getElementById('cambridge-intro-text');
-            if (cambridgeIntroText) cambridgeIntroText.style.display = '';
+            if (cambridgeIntroText) cambridgeIntroText.style.display = 'block';
             
             // Ocultar contenedores de test de cambridge
             ['test-movers', 'test-starters', 'test-starters-movers', 'test-movers-exam', 'test-cambridge-general', 'test-cambridge-ket'].forEach(id => {
                 const el = document.getElementById(id) || document.getElementById(id.replace('-', ''));
                 if(el) el.style.display = 'none';
             });
-
-            // Opcional: Subir la pantalla suavemente para ver las tarjetas
-            document.getElementById('cambridge-main-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
-
     }
 });
