@@ -499,6 +499,7 @@ document.addEventListener('DOMContentLoaded', function () {
             displayResults(scores, examenActivoId);
             document.getElementById(`test-${examenActivoId}`).style.display = "none";
             resultsSection.style.display = "block";
+            hacerScrollA('results');
         } 
         else if (isCambridge) {
             const resultado = calificarCambridge();
@@ -522,6 +523,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const idContenedorHTML = {'sm': 'test-starters-movers', 'me': 'test-movers-exam', 'cg': 'test-cambridge-general', 'ck': 'test-cambridge-ket'}[prefix] || `test-${prefix}`;
             document.getElementById(idContenedorHTML).style.display = "none";
             document.getElementById('results-cambridge').style.display = "block";
+            hacerScrollA('results-cambridge');
         }
         else {
             let aciertos = 0;
@@ -543,8 +545,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const idContenedorHTML = {'comipems2': 'test-comipems2'}[prefix] || `test-${prefix}`;
             document.getElementById(idContenedorHTML).style.display = "none";
             resultsSection.style.display = "block";
+            hacerScrollA('results');
         }
-        window.scrollTo(0, 0);
+        
     }
 
     // Generar el Desglose Universal para exámenes de admisión
@@ -791,3 +794,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+function hacerScrollA(idElemento) {
+    const elemento = document.getElementById(idElemento);
+    if (elemento) {
+        
+        const posicionY = elemento.getBoundingClientRect().top + window.scrollY - 500;
+        
+        window.scrollTo({ top: posicionY, behavior: 'smooth' });
+    }
+}
