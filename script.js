@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (examenActivoId === 'movers_exam') return 'me';
         if (examenActivoId === 'cambridge_general') return 'cg';
         if (examenActivoId === 'cambridge_ket') return 'ck'; // NUEVO PREFIJO
-        return examenActivoId; 
+        return examenActivoId;
     }
 
     function iniciarExamenUniversal(id) {
@@ -158,12 +158,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function generarPreguntasUniversal() {
         const prefix = getHtmlPrefix();
         const container = document.getElementById(`test-questions-container-${prefix}`);
-        
+
         if (!container) {
             alert(`🚨 ERROR HTML: No se encontró un contenedor con el ID: test-questions-container-${prefix}`);
             return;
         }
-        
+
         container.innerHTML = "";
         let numPregunta = 1;
 
@@ -186,8 +186,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const isCambridge = ['movers', 'starters', 'starters_movers', 'movers_exam', 'cambridge_general', 'cambridge_ket'].includes(examenActivoId);
 
         for (const [seccion, preguntas] of Object.entries(iterador)) {
-            if (!preguntas || !Array.isArray(preguntas)) continue; 
-            
+            if (!preguntas || !Array.isArray(preguntas)) continue;
+
             if (seccion !== "Preguntas") {
                 const style = isCambridge ? `style="color: var(--rojo); border-bottom: 2px solid var(--rojo); padding-bottom: 10px; margin-bottom: 20px;"` : '';
                 container.innerHTML += `<h3 class="section-title-${prefix}" ${style}>${seccion}</h3>`;
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             preguntas.forEach((preg) => {
                 const n = numPregunta;
-                
+
                 // GENERADOR DE ELEMENTO AUDIO
                 const audioHTML = preg.audio ? `<div style="text-align: center; margin-bottom: 20px; background:#f4f4f4; padding:15px; border-radius:10px;"><p style="margin-bottom:10px; font-weight:bold; color:#555;">🔊 Escucha el siguiente audio:</p><audio controls style="width: 100%; max-width: 400px;"><source src="${preg.audio}" type="audio/mpeg">Tu navegador no soporta audios.</audio></div>` : "";
 
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <label><input type="radio" name="q-${prefix}-${n}" value="no-interesa" required> ${labelNo}</label>
                             </div>
                         </div>`;
-                } 
+                }
                 // 4.2 Lógica Especial Cambridge
                 else if (isCambridge) {
                     if (preg.type === "reading") {
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 </div>
                                 <p style="margin-top: 20px; font-style: italic; color: #666; text-align: center;">📖 Presiona "Siguiente" cuando estés listo.</p>
                             </div>`;
-                    } 
+                    }
                     else if (preg.type === "writing_example") {
                         const preguntaTexto = preg.p ? `<p style="font-size: 1.1rem; margin-bottom: 5px;">${preg.p}</p>` : "";
                         container.innerHTML += `
@@ -274,11 +274,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         } else {
                             const imagenMostrar = preg.img ? `<div style="text-align: center; margin-bottom: 20px;"><img src="${preg.img}" style="max-height: 150px; max-width: 100%; border-radius: 5px;"></div>` : '';
                             const isLongText = preg.bancoRespuestas && preg.bancoRespuestas.includes("dear");
-                            
-                            const inputBox = isLongText 
+
+                            const inputBox = isLongText
                                 ? `<textarea id="input-${prefix}-${n}" placeholder="Escribe tu texto aquí..." rows="8" style="width: 100%; padding: 15px; border-radius: 5px; border: 1px solid #ccc; font-family: inherit; font-size: 1.05rem; resize: vertical;"></textarea>`
                                 : `<input type="text" id="input-${prefix}-${n}" placeholder="Tu respuesta..." style="width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-family: inherit; font-size: 1.1rem; border-bottom: 2px solid #ccc;">`;
-                                
+
                             innerHtml = `
                                 ${audioHTML}
                                 <p style="font-size: 1.1rem; margin-bottom: 15px; color: red;">* <span style="color: black;">${preg.p}</span></p>
@@ -318,10 +318,10 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <span style="font-size: 1.1rem; color: #333; text-align: left; flex-grow: 1; word-wrap: break-word;">${op}</span>
                                 </label>`;
                         }).join("");
-                        
+
                         let imagenHTML = preg.img ? `<div style="text-align: center; margin-bottom: 25px;"><img src="${preg.img}" style="max-width: 100%; border-radius: 8px; max-height: 350px; object-fit: contain;"></div>` : "";
                         const pText = preg.p ? `<p style="font-size: 1.2rem; margin-bottom: 15px; text-align: left; color: #333;"><strong>${n}.</strong> ${preg.p}</p>` : "";
-                        
+
                         container.innerHTML += `
                             <div class="question" id="question-${prefix}-${n}">
                                 ${audioHTML}
@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 </div>
                             </div>`;
                     }
-                } 
+                }
                 // 4.3 Lógica Simuladores de Admisión (IPN, UAM, COMIPEMS...)
                 else {
                     let imagenHTML = "";
@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function mostrarPreguntaUniversal(index) {
         const prefix = getHtmlPrefix();
         const preguntasHtml = document.querySelectorAll(`#test-questions-container-${prefix} .question`);
-        
+
         preguntasHtml.forEach((q, i) => {
             q.style.display = i === index ? "block" : "none";
             // Detener audios si se cambia de pregunta
@@ -417,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isCambridge) {
             if (preguntaActual.type === "reading" || preguntaActual.type === "writing_example") {
                 respuestasUsuario[preguntaActualIndex] = "LECTURA_COMPLETADA";
-            } 
+            }
             else if (preguntaActual.type === "open_image") {
                 let respuestasEstudiante = [];
                 let todasContestadas = true;
@@ -431,31 +431,26 @@ document.addEventListener('DOMContentLoaded', function () {
                     return false;
                 }
                 respuestasUsuario[preguntaActualIndex] = respuestasEstudiante;
-            } 
-           else if (preguntaActual.type === "scrambled_word" || preguntaActual.type === "writing_input") {
-    const input = document.getElementById(`input-${prefix}-${n}`);
-    const texto = input.value.trim();
+            }
+            else if (preguntaActual.type === "scrambled_word" || preguntaActual.type === "writing_input") {
+                const input = document.getElementById(`input-${prefix}-${n}`);
+                const textoUsuario = input.value.trim();
 
-    // Validar que no esté vacío
-    if (texto === "") {
-        alert(`Por favor, escribe tu respuesta para ${esFinal ? 'finalizar' : 'continuar'}.`);
-        return false;
-    }
+                if (textoUsuario === "") {
+                    alert(`Por favor, escribe tu respuesta para ${esFinal ? 'finalizar' : 'continuar'}.`);
+                    return false;
+                }
 
-    // VALIDACIÓN PARA FCE (cambridge_general)
-    if (examenActivoId === 'cambridge_general') {
-        const palabras = texto.split(/\s+/).filter(p => p.length > 0);
-        const cantidad = palabras.length;
+                if (preguntaActual.minWords && preguntaActual.maxWords) {
+                    const numPalabras = textoUsuario.split(/\s+/).filter(word => word.length > 0).length;
 
-        if (cantidad < 100 || cantidad > 150) {
-            alert(`Tu texto debe tener entre 100 y 150 palabras. Actualmente tienes ${cantidad}.`);
-            return false;
-        }
-    }
-
-    // Guardar respuesta
-    respuestasUsuario[preguntaActualIndex] = texto;
-}
+                    if (numPalabras < preguntaActual.minWords || numPalabras > preguntaActual.maxWords) {
+                        alert(`Tu texto tiene ${numPalabras} palabras. Para este examen debes escribir entre ${preguntaActual.minWords} y ${preguntaActual.maxWords} palabras.`);
+                        return false; // Bloquea el avance
+                    }
+                }
+                respuestasUsuario[preguntaActualIndex] = textoUsuario;
+            }
             else {
                 const selector = `input[name="q-${prefix}-${n}"]:checked`;
                 const seleccionada = document.querySelector(selector);
@@ -491,7 +486,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const isCambridge = ['movers', 'starters', 'starters_movers', 'movers_exam', 'cambridge_general', 'cambridge_ket'].includes(examenActivoId);
         const prefix = getHtmlPrefix();
-        
+
         if (!isCambridge) displayUserInfo();
 
         if (examenActivoId === 'universitario' || examenActivoId === 'bachillerato') {
@@ -500,7 +495,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById(`test-${examenActivoId}`).style.display = "none";
             resultsSection.style.display = "block";
             hacerScrollA('results');
-        } 
+        }
         else if (isCambridge) {
             const resultado = calificarCambridge();
             let titulos = {
@@ -511,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 'cambridge_general': 'Resultados de Inglés General',
                 'cambridge_ket': 'Resultados KET Cambridge'
             };
-            
+
             document.getElementById('cambridge-score-details').innerHTML = `
                 <div class="career-card top-area">
                     <h3 style="text-align:center;">${titulos[examenActivoId]}</h3>
@@ -519,8 +514,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p style="text-align:center; font-size: 1.2rem;"><strong>Calificación Global:</strong> ${resultado.porcentaje}%</p>
                 </div>
             `;
-            
-            const idContenedorHTML = {'sm': 'test-starters-movers', 'me': 'test-movers-exam', 'cg': 'test-cambridge-general', 'ck': 'test-cambridge-ket'}[prefix] || `test-${prefix}`;
+
+            const idContenedorHTML = { 'sm': 'test-starters-movers', 'me': 'test-movers-exam', 'cg': 'test-cambridge-general', 'ck': 'test-cambridge-ket' }[prefix] || `test-${prefix}`;
             document.getElementById(idContenedorHTML).style.display = "none";
             document.getElementById('results-cambridge').style.display = "block";
             hacerScrollA('results-cambridge');
@@ -532,7 +527,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let tituloExamen = "Resultados del Examen";
             const opcionMenu = testCatalog.admision.find(t => t.value === examenActivoId);
-            if(opcionMenu) tituloExamen = opcionMenu.label;
+            if (opcionMenu) tituloExamen = opcionMenu.label;
 
             resultsCards.innerHTML = `
                 <div class="career-card top-area">
@@ -542,22 +537,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             `;
             mostrarDesgloseUniversal();
-            const idContenedorHTML = {'comipems2': 'test-comipems2'}[prefix] || `test-${prefix}`;
+            const idContenedorHTML = { 'comipems2': 'test-comipems2' }[prefix] || `test-${prefix}`;
             document.getElementById(idContenedorHTML).style.display = "none";
             resultsSection.style.display = "block";
             hacerScrollA('results');
         }
-        
     }
 
     // Generar el Desglose Universal para exámenes de admisión
     function mostrarDesgloseUniversal() {
         const contenedor = document.getElementById("uam-details");
         contenedor.innerHTML = "<h3>Desglose de respuestas por sección</h3>";
-        
+
         let preguntaGlobalNum = 1;
         let iterador;
-        
+
         if (examenActivoId === 'uam') iterador = { "Preguntas": preguntasUAM };
         else if (examenActivoId === 'ipn') iterador = preguntasPorSeccionIPN;
         else if (examenActivoId === 'comipems') iterador = preguntasPorSeccionComipems;
@@ -571,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const num = preguntaGlobalNum;
                 const correcta = p.c;
                 const respuesta = respuestasUsuario[num - 1] || "Sin responder";
-                
+
                 let imagenHTML = "";
                 if (p.img) {
                     const src = p.img.includes('/') ? p.img : `IMG_IPN/${p.img}`;
@@ -599,30 +593,30 @@ document.addEventListener('DOMContentLoaded', function () {
     // ==================================================================
     // 5. ASIGNACIÓN DE EVENTOS DE BOTONES
     // ==================================================================
-    
+
     // Asignar eventos de Siguiente y Finalizar a todos los exámenes
     ['uni', 'bach', 'uam', 'comipems', 'comipems2', 'unammedicina', 'ipn', 'movers', 'starters', 'sm', 'me', 'cg', 'ck'].forEach(prefix => {
         const btnSiguiente = document.getElementById(`next-btn-${prefix}`);
         const btnSubmit = document.getElementById(`submit-btn-${prefix}`);
-        if(btnSiguiente) btnSiguiente.addEventListener('click', manejarBotonSiguiente);
-        if(btnSubmit) btnSubmit.addEventListener('click', manejarBotonSubmit);
+        if (btnSiguiente) btnSiguiente.addEventListener('click', manejarBotonSiguiente);
+        if (btnSubmit) btnSubmit.addEventListener('click', manejarBotonSubmit);
     });
 
     // Eventos de los botones de Cambridge en la pantalla principal
     ['movers', 'starters', 'starters-movers', 'movers-exam', 'cambridge-ket', 'cambridge-general'].forEach(id => {
         const btn = document.getElementById(`btn-start-${id}`);
-        if(btn) {
+        if (btn) {
             btn.addEventListener('click', () => {
                 const internalId = id.replace('-', '_');
                 examenActivoId = internalId;
                 document.getElementById('cambridge-cards').style.display = 'none';
                 const intro = document.getElementById('cambridge-intro-text');
                 if (intro) intro.style.display = 'none';
-                
+
                 const containerId = id === 'movers' ? 'test-movers' : `test-${id}`;
                 const elem = document.getElementById(containerId) || document.getElementById('testMovers');
-                if(elem) elem.style.display = 'block';
-                
+                if (elem) elem.style.display = 'block';
+
                 iniciarExamenUniversal(internalId);
             });
         }
@@ -638,7 +632,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         preguntasActivas.forEach((p, i) => {
             if (p.type === "reading" || p.type === "writing_example") return;
-            
+
             if (p.type === "open_image") {
                 p.subpreguntas.forEach((sub, idx) => {
                     evaluables++;
@@ -771,36 +765,49 @@ document.addEventListener('DOMContentLoaded', function () {
         resultsSection.style.display = 'none';
         ['test-universitario', 'test-bachillerato', 'test-uam', 'test-comipems', 'test-comipems2', 'test-unammedicina', 'test-ipn', 'test-movers', 'test-starters', 'test-starters-movers', 'test-movers-exam', 'test-cambridge-general', 'test-cambridge-ket'].forEach(id => {
             const el = document.getElementById(id) || document.getElementById(id.replace('-', ''));
-            if(el) el.style.display = 'none';
+            if (el) el.style.display = 'none';
         });
-        
+
         instructionsScreen.style.display = 'none';
         registrationForm.style.display = 'block';
     });
 
     const restartCambridgeBtn = document.getElementById('restart-cambridge-btn');
     if (restartCambridgeBtn) {
-        restartCambridgeBtn.addEventListener('click', () => {
+        // Clonamos para evitar eventos duplicados en caché
+        const nuevoRestartBtn = restartCambridgeBtn.cloneNode(true);
+        restartCambridgeBtn.parentNode.replaceChild(nuevoRestartBtn, restartCambridgeBtn);
+
+        nuevoRestartBtn.addEventListener('click', () => {
             document.getElementById('results-cambridge').style.display = 'none';
-            document.getElementById('cambridge-cards').style.display = 'flex'; // o 'grid'|
+
+            // MAGIA: Al dejar las comillas vacías, el navegador respeta tu diseño CSS original
+            document.getElementById('cambridge-cards').style.display = '';
+
             const cambridgeIntroText = document.getElementById('cambridge-intro-text');
-            if (cambridgeIntroText) cambridgeIntroText.style.display = 'block';
-            
+            if (cambridgeIntroText) cambridgeIntroText.style.display = '';
+
             // Ocultar contenedores de test de cambridge
             ['test-movers', 'test-starters', 'test-starters-movers', 'test-movers-exam', 'test-cambridge-general', 'test-cambridge-ket'].forEach(id => {
                 const el = document.getElementById(id) || document.getElementById(id.replace('-', ''));
-                if(el) el.style.display = 'none';
+                if (el) el.style.display = 'none';
             });
+
+            // Opcional: Subir la pantalla suavemente para ver las tarjetas
+            document.getElementById('cambridge-main-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+
+    }
+
+    function hacerScrollA(idElemento) {
+        const elemento = document.getElementById(idElemento);
+        if (elemento) {
+
+            const posicionY = elemento.getBoundingClientRect().top + window.scrollY - 500;
+
+            window.scrollTo({ top: posicionY, behavior: 'smooth' });
+        }
     }
 });
 
-function hacerScrollA(idElemento) {
-    const elemento = document.getElementById(idElemento);
-    if (elemento) {
-        
-        const posicionY = elemento.getBoundingClientRect().top + window.scrollY - 500;
-        
-        window.scrollTo({ top: posicionY, behavior: 'smooth' });
-    }
-}
+
